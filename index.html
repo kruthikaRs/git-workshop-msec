@@ -1,0 +1,629 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eventify - My Event Management Blog</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #faf9f6;
+    color: #333;
+}
+
+/* NAVBAR */
+header {
+    background: #172333;
+    padding: 18px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: 700;
+    color: #e5b968;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 25px;
+    font-size: 14px;
+    transition: .3s;
+}
+
+nav a:hover {
+    color: #e5b968;
+}
+
+/* HERO */
+.hero {
+    height: 580px;
+    background:
+    linear-gradient(rgba(15,25,40,.65),rgba(15,25,40,.65)),
+    url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1600');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    padding: 8%;
+    color: white;
+}
+
+.hero-content {
+    max-width: 650px;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 55px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.btn {
+    display: inline-block;
+    background: #d5a64e;
+    color: #172333;
+    padding: 13px 28px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.btn:hover {
+    background: white;
+}
+
+/* GENERAL */
+section {
+    padding: 80px 8%;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-heading h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    color: #172333;
+    margin-bottom: 12px;
+}
+
+.section-heading p {
+    color: #777;
+}
+
+/* ABOUT */
+.about {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.about img {
+    width: 48%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.about-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 35px;
+    color: #172333;
+    margin-bottom: 20px;
+}
+
+.about-content p {
+    line-height: 1.9;
+    color: #666;
+    margin-bottom: 18px;
+}
+
+/* BLOG */
+.blog {
+    background: #f0eee8;
+}
+
+.blog-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+.blog-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,.06);
+    transition: .3s;
+}
+
+.blog-card:hover {
+    transform: translateY(-8px);
+}
+
+.blog-card img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+}
+
+.blog-info {
+    padding: 24px;
+}
+
+.blog-info span {
+    color: #c08b31;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.blog-info h3 {
+    color: #172333;
+    font-size: 19px;
+    margin: 12px 0;
+}
+
+.blog-info p {
+    color: #777;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.read-more {
+    display: inline-block;
+    margin-top: 18px;
+    color: #bd892e;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* CATEGORIES */
+.categories {
+    background: #172333;
+}
+
+.categories .section-heading h2 {
+    color: white;
+}
+
+.categories .section-heading p {
+    color: #ccc;
+}
+
+.category-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.category-card {
+    padding: 35px 20px;
+    text-align: center;
+    border: 1px solid #d5a64e;
+    border-radius: 10px;
+    transition: .3s;
+}
+
+.category-card:hover {
+    background: #d5a64e;
+    transform: translateY(-5px);
+}
+
+.category-card .emoji {
+    font-size: 40px;
+}
+
+.category-card h3 {
+    color: #e5b968;
+    margin: 15px 0 10px;
+}
+
+.category-card p {
+    color: #ddd;
+    font-size: 13px;
+}
+
+/* GALLERY */
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.gallery-container img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: .3s;
+}
+
+.gallery-container img:hover {
+    transform: scale(1.03);
+}
+
+/* CONTACT */
+.contact {
+    background: #f0eee8;
+    text-align: center;
+}
+
+.contact form {
+    max-width: 600px;
+    margin: auto;
+}
+
+.contact input,
+.contact textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: inherit;
+    outline: none;
+}
+
+.contact textarea {
+    height: 140px;
+    resize: vertical;
+}
+
+.contact input:focus,
+.contact textarea:focus {
+    border-color: #d5a64e;
+}
+
+/* FOOTER */
+footer {
+    background: #172333;
+    color: white;
+    text-align: center;
+    padding: 30px 15px;
+}
+
+footer span {
+    color: #e5b968;
+}
+
+.social-links {
+    margin-bottom: 15px;
+}
+
+.social-links a {
+    color: #e5b968;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+/* MOBILE */
+@media(max-width: 900px) {
+    .blog-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .category-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about {
+        flex-direction: column;
+    }
+
+    .about img {
+        width: 100%;
+    }
+}
+
+@media(max-width: 600px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    nav a {
+        margin: 0;
+        font-size: 12px;
+    }
+
+    .hero {
+        height: 480px;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .blog-container,
+    .category-container,
+    .gallery-container {
+        grid-template-columns: 1fr;
+    }
+
+    section {
+        padding: 55px 6%;
+    }
+
+    .section-heading h2 {
+        font-size: 29px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<header>
+    <div class="logo">EVENTIFY.</div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#blog">Blog</a>
+        <a href="#categories">Events</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<!-- HERO SECTION -->
+<section class="hero" id="home">
+    <div class="hero-content">
+        <h1>Making Every Event A Beautiful Memory</h1>
+
+        <p>
+            Welcome to my event management blog! Discover creative
+            ideas, expert planning tips, beautiful decorations and
+            inspiration for unforgettable celebrations.
+        </p>
+
+        <a href="#blog" class="btn">Explore My Blog</a>
+    </div>
+</section>
+
+<!-- ABOUT SECTION -->
+<section id="about">
+    <div class="about">
+
+        <img src="https://images.unsplash.com/photo-1507504031003-b417219a0fde?w=900"
+             alt="Elegant event decoration">
+
+        <div class="about-content">
+            <h2>Welcome To My Blog</h2>
+
+            <p>
+                Hello! I am an event enthusiast who loves turning
+                ordinary occasions into extraordinary experiences.
+            </p>
+
+            <p>
+                This blog is dedicated to sharing my passion for
+                event management, wedding planning, birthday parties,
+                corporate events and creative celebrations.
+            </p>
+
+            <p>
+                My mission is to inspire everyone to create beautiful
+                events through creativity, organization and planning.
+            </p>
+
+            <a href="#contact" class="btn">Contact Me</a>
+        </div>
+
+    </div>
+</section>
+
+<!-- BLOG SECTION -->
+<section class="blog" id="blog">
+
+    <div class="section-heading">
+        <h2>Latest Blog Posts</h2>
+        <p>Ideas, inspiration and tips for your next celebration.</p>
+    </div>
+
+    <div class="blog-container">
+
+        <div class="blog-card">
+            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800"
+                 alt="Wedding decoration">
+
+            <div class="blog-info">
+                <span>WEDDING PLANNING</span>
+                <h3>How To Plan Your Dream Wedding</h3>
+                <p>
+                    Learn how to organize your dream wedding with
+                    beautiful decorations, smart budgeting and
+                    creative themes.
+                </p>
+                <a href="#contact" class="read-more">Read More →</a>
+            </div>
+        </div>
+
+        <div class="blog-card">
+            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800"
+                 alt="Party celebration">
+
+            <div class="blog-info">
+                <span>PARTY MANAGEMENT</span>
+                <h3>Creative Ideas For Birthday Parties</h3>
+                <p>
+                    Make birthdays special with exciting themes,
+                    entertainment, lighting and amazing decorations.
+                </p>
+                <a href="#contact" class="read-more">Read More →</a>
+            </div>
+        </div>
+
+        <div class="blog-card">
+            <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=800"
+                 alt="Corporate event">
+
+            <div class="blog-info">
+                <span>CORPORATE EVENTS</span>
+                <h3>Planning A Successful Corporate Event</h3>
+                <p>
+                    Discover professional event strategies for
+                    conferences, meetings and business celebrations.
+                </p>
+                <a href="#contact" class="read-more">Read More →</a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- EVENT CATEGORIES -->
+<section class="categories" id="categories">
+
+    <div class="section-heading">
+        <h2>Explore Event Categories</h2>
+        <p>Something special for every occasion.</p>
+    </div>
+
+    <div class="category-container">
+
+        <div class="category-card">
+            <div class="emoji">💍</div>
+            <h3>Wedding Events</h3>
+            <p>Beautiful wedding planning and decoration ideas.</p>
+        </div>
+
+        <div class="category-card">
+            <div class="emoji">🎂</div>
+            <h3>Birthday Parties</h3>
+            <p>Fun themes and unforgettable birthday celebrations.</p>
+        </div>
+
+        <div class="category-card">
+            <div class="emoji">🏢</div>
+            <h3>Corporate Events</h3>
+            <p>Professional meetings and business celebrations.</p>
+        </div>
+
+        <div class="category-card">
+            <div class="emoji">🎉</div>
+            <h3>Special Parties</h3>
+            <p>Creative ideas for festivals and private parties.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+
+    <div class="section-heading">
+        <h2>Event Inspiration Gallery</h2>
+        <p>A collection of beautiful event moments.</p>
+    </div>
+
+    <div class="gallery-container">
+        <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=700"
+             alt="Wedding table setup">
+
+        <img src="https://images.unsplash.com/photo-1507504031003-b417219a0fde?w=700"
+             alt="Event decoration">
+
+        <img src="https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=700"
+             alt="Concert event">
+
+        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=700"
+             alt="Elegant event">
+
+        <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=700"
+             alt="Corporate gathering">
+
+        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=700"
+             alt="Celebration party">
+    </div>
+
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+
+    <div class="section-heading">
+        <h2>Get In Touch</h2>
+        <p>Have an idea or want to collaborate? Send me a message!</p>
+    </div>
+
+    <form onsubmit="sendMessage(event)">
+
+        <input type="text" placeholder="Enter Your Name" required>
+
+        <input type="email" placeholder="Enter Your Email" required>
+
+        <input type="text" placeholder="Subject">
+
+        <textarea placeholder="Write Your Message..." required></textarea>
+
+        <button type="submit" class="btn">Send Message</button>
+
+    </form>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+
+    <div class="social-links">
+        <a href="https://instagram.com/">Instagram</a>
+        <a href="https://facebook.com/">Facebook</a>
+        <a href="https://linkedin.com/">LinkedIn</a>
+    </div>
+
+    <p>© 2026 <span>EVENTIFY</span> | All Rights Reserved.</p>
+
+    <p>Designed with ❤️ for Event Lovers</p>
+
+</footer>
+
+<script>
+function sendMessage(event) {
+    event.preventDefault();
+
+    alert("Thank you for contacting Eventify! Your message has been received.");
+
+    event.target.reset();
+}
+</script>
+
+</body>
+</html>
